@@ -1,5 +1,5 @@
-var path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     // Change to your "entry-point".
@@ -9,12 +9,20 @@ module.exports = {
         filename: 'app.bundle.js'
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.json'],
+        modules: [
+            path.resolve(__dirname, 'src'),
+            path.resolve(__dirname, 'test/unit/specs'),
+            "node_modules"
+        ],
+        alias: {
+            vue: 'vue/dist/vue.js'
+        }
     },
     module: {
         rules: [{
             // Include ts, tsx, js, and jsx files.
-            test: /\.(ts|js)x?$/,
+            test: /\.ts$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
         },{
@@ -24,7 +32,12 @@ module.exports = {
                 options: {
                     attrs: [':data-src']
                 }
-            }
+            },
+            include: '/index.html/'
+        },{
+            test: /\.html$/,
+            loader: 'vue-template-loader',
+            exclude: /index.html/,
         }]
     },
     devServer: {
