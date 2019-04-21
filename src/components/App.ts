@@ -1,9 +1,9 @@
 import { Component, Vue } from 'vue-property-decorator'
-import WithRender from './App.html' // ?style=./HelloWorld.scss'
+import WithRender from './App.html?style=./App.scss'
 
 @WithRender
 @Component({
-  name: 'HelloWorld'
+  name: 'App'
 })
 export default class App extends Vue {
 

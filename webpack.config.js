@@ -21,7 +21,6 @@ module.exports = {
     },
     module: {
         rules: [{
-            // Include ts, tsx, js, and jsx files.
             test: /\.ts$/,
             exclude: /node_modules/,
             loader: 'babel-loader',
@@ -38,6 +37,18 @@ module.exports = {
             test: /\.html$/,
             loader: 'vue-template-loader',
             exclude: /index.html/,
+        },{
+            test: /\.scss$/,
+            use: [{
+                loader: "style-loader"      // creates style nodes from JS strings
+            }, {
+                loader: "css-loader"        // translates CSS into CommonJS
+            }, {
+                loader: "sass-loader",      // compiles Sass to CSS
+                options: {
+                    includePaths: ["absolute/path/a", "absolute/path/b"]
+                }
+            }]
         }]
     },
     devServer: {
