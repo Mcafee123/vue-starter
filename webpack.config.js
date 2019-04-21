@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     // Change to your "entry-point".
@@ -36,12 +37,23 @@ module.exports = {
         },{
             test: /\.html$/,
             loader: 'vue-template-loader',
+            options: {
+                scoped: true,
+                hmr: false,
+            },
             exclude: /index.html/,
         },{
             test: /\.scss$/,
+            enforce: 'post', // damit werden scoped css möglich, siehe vue-template-loader options
             use: [{
-                loader: "style-loader"      // creates style nodes from JS strings
-            }, {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    // you can specify a publicPath here
+                    // by default it uses publicPath in webpackOptions.output
+                    publicPath: '../',
+                    hmr: true,
+                }
+            },{
                 loader: "css-loader"        // translates CSS into CommonJS
             }, {
                 loader: "sass-loader",      // compiles Sass to CSS
@@ -62,6 +74,12 @@ module.exports = {
             template: 'src/index.html',
             inject: true,
             filename: 'index.html' //relative to root of the application
+        }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: 'app.bundle.css',
+            chunkFilename: '[id].css',
         })
     ]
 }
