@@ -5,7 +5,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 module.exports = (env, argv) => {
 
     env = (env && env.development !== undefined) ? env : { development: false }
-    console.log(env)
     if (env.development === true) {
         env.mode = 'development'
     } else {
@@ -13,13 +12,22 @@ module.exports = (env, argv) => {
     }
 
     const cfg = base(env, argv)
-    // mode
+    // set build mode
     cfg.mode = env.mode
-    // minimize
-    if (!env.development) {
+
+    if (env.mode === 'production') {
+        // minimize for production builds
         cfg.optimization = {
             minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]
         }
+        // no source-maps
+        cfg.devtool = false
+        console.log('Minimize, don\'t create Source Maps')
+    } else {
+        // don't minimize
+        // source-maps
+        cfg.devtool = 'source-map'
+        console.log('Don\'t minimize, create Source Maps')
     }
 
     console.log('')

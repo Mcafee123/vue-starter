@@ -7,10 +7,8 @@
     "start": "npm run bundle-dev && webpack-dev-server --env.development --open",
     "bundle-dev": "npm run build-dev && webpack --env.development",
     "bundle": "npm run build && webpack",
-    "build-dev": "npm run build-types && npm run babel-dev",
-    "build": "npm run build-types && npm run babel",
-    "babel-dev": "babel src --out-dir lib --extensions \".ts\" --source-maps both",
-    "babel": "babel src --out-dir lib --extensions \".ts\"",
+    "build-dev": "npm run type-check && npm run build-types && babel src --out-dir lib --extensions \".ts\" --source-maps both",
+    "build": "npm run type-check && babel src --out-dir lib --extensions \".ts\" --delete-dir-on-start",
     "build-types": "tsc --emitDeclarationOnly",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
