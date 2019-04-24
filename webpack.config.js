@@ -12,8 +12,15 @@ module.exports = (env, argv) => {
     }
 
     const cfg = base(env, argv)
+
     // set build mode
     cfg.mode = env.mode
+
+    console.log('')
+    console.log('Webpack-Konfiguration:')
+    console.log('======================')
+    console.log('mode: ' + cfg.mode)
+    console.log('user: ' + process.env.USER)
 
     if (env.mode === 'production') {
         // minimize for production builds
@@ -30,11 +37,6 @@ module.exports = (env, argv) => {
         console.log('Don\'t minimize, create Source Maps')
     }
 
-    console.log('')
-    console.log('Webpack-Konfiguration:')
-    console.log('======================')
-    console.log('mode: ' + cfg.mode)
-    console.log('user: ' + process.env.USER)
     console.log('')
 
     return cfg

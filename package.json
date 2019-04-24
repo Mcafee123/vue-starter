@@ -4,7 +4,7 @@
   "description": "Starter Project for Vue with Typescript, Babel and Webpack",
   "main": "src/main.ts",
   "scripts": {
-    "start": "npm run bundle-dev && webpack-dev-server --env.development --open",
+    "start": "npm run build-dev && webpack-dev-server --env.development --open",
     "bundle-dev": "npm run build-dev && webpack --env.development",
     "bundle": "npm run build && webpack",
     "build-dev": "npm run type-check && npm run build-types && babel src --out-dir lib --extensions \".ts\" --source-maps both",
