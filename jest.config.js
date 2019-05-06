@@ -14,7 +14,9 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
     "^.+\\.ts$": "babel-jest",
-    "^.+\\.html$": "vue-template-loader",
-    "^.+\\.scss": "sass-loader",
+    "^.+\\.html$": "<rootDir>/test/templateLoader"
+  },
+  moduleNameMapper: {
+    "^.+\\.scss$": "identity-obj-proxy"
   }
 }

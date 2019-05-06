@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator'
-import WithRender from './Test.html?style=./Test.scss'
+// import WithRender from './Test.html?style=./Test.scss'
 
-@WithRender
+// @WithRender
 @Component({
   name: 'Test'
 })
