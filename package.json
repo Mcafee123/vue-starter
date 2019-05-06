@@ -11,8 +11,7 @@
     "build": "npm run type-check && babel src --out-dir lib --extensions \".ts\" --delete-dir-on-start",
     "build-types": "tsc --emitDeclarationOnly",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch",
-    "prebundle": "jest"
+    "type-check:watch": "npm run type-check -- --watch"
   },
   "repository": {
     "type": "git",
@@ -40,16 +39,12 @@
     "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-typescript": "^7.3.3",
-    "@types/jest": "^24.0.11",
     "@types/node": "^11.13.7",
     "@types/webpack": "^4.4.27",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.1",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.7.1",
-    "jest-cli": "^24.7.1",
     "mini-css-extract-plugin": "^0.6.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
