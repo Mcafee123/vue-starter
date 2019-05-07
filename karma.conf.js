@@ -22,7 +22,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/unit/specs/all_tests.js',
+      'test/all_tests.js',
       //'lib/**/*.js'
     ],
 
@@ -35,7 +35,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/unit/specs/all_tests.js': ['webpack'],
+      'test/all_tests.js': ['webpack'],
       //'lib/**/*.js': ['webpack']
       // './coverage.ts': ['webpack', 'sourcemap'],
     },
