@@ -35,6 +35,9 @@ module.exports = (env, argv) => {
         // source-maps
         cfg.devtool = 'source-map'
         console.log('Don\'t minimize, create Source Maps')
+        console.warn(cfg.entry)
+        cfg.entry = undefined // 'test/unit/specs/**/*.spec.js'
+        console.warn(cfg.entry)
     }
 
     console.log('')

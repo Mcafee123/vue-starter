@@ -4,13 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports =(env, argv) => {
   return {
-    entry: './lib/main',
+    entry: ['./lib/main'],
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: 'app.bundle.js'
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.json', '.scss'],
+      extensions: ['.ts', '.js', '.json', '.scss'],
       modules: [
         path.resolve(__dirname, 'src'),
         path.resolve(__dirname, 'test/unit/specs'),

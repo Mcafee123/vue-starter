@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { util } from 'services/util'
+import { expect } from 'chai'
 
 const originalErrorHandler = Vue.config.errorHandler
 
@@ -183,9 +184,9 @@ export class ComponentBuilder<T extends Vue> {
       // tslint:disable-next-line:no-console
       console.log('expect: ' + this.expectRenderError)
       Vue.config.errorHandler = (err, vm, info) => {
-        expect(err).not.toBeNull()
-        expect(err.message).not.toBeNull()
-        expect(err.message).toBe(this.expectRenderError)
+        expect(err).not.to.equal(null)
+        expect(err.message).not.to.equal(null)
+        expect(err.message).to.equal(this.expectRenderError)
         // tslint:disable-next-line:no-console
         console.log('Fehler "' + err.message + '" abgefangen')
       }

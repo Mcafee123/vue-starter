@@ -1,5 +1,8 @@
 import { util } from 'services/util'
+import { expect } from 'chai'
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(util.CamelPad('vueTemplateCompiler')).toBe('vue-template-compiler')
+describe('CamelPad', () => {
+  it('un-CamelPad', () => {
+    expect(util.CamelPad('vueTemplateCompiler')).to.equal('vue-template-compiler')
+  })
 })
