@@ -12,8 +12,9 @@ module.exports =(env, argv) => {
     resolve: {
       extensions: ['.ts', '.js', '.json', '.scss'],
       modules: [
-        path.resolve(__dirname, 'src'),
-        path.resolve(__dirname, 'test/unit/specs'),
+        path.resolve(__dirname, 'src'),       // für HTML files
+        path.resolve(__dirname, 'lib'),       // für Applikation
+        path.resolve(__dirname, 'test/lib'),  // Für Test Helpers
         "node_modules"
       ],
       alias: {

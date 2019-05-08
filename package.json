@@ -12,7 +12,10 @@
     "build-types": "tsc --emitDeclarationOnly",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "test": "npm run build-dev && babel test/unit/specs --out-dir test/lib --extensions \".ts\" --delete-dir-on-start && karma start --single-run"
+    "test": "karma start --single-run",
+    "pretest": "npm run build-dev && babel test/unit/specs --out-dir test/lib/specs --extensions \".ts\"",
+    "test:watch": "karma start",
+    "pretest:watch": "npm run build-dev && babel test/unit/specs --out-dir test/lib/specs --extensions \".ts\""
   },
   "repository": {
     "type": "git",
