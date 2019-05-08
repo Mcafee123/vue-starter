@@ -1,4 +1,5 @@
 const base = require('./webpack.base')
+const path = require('path')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
@@ -36,9 +37,10 @@ module.exports = (env, argv) => {
         cfg.devtool = 'source-map'
         console.log('Don\'t minimize, create Source Maps')
         if (env.test) {
-            console.warn(cfg.entry)
-            cfg.entry = undefined //  './test/all_tests.ts'
-            console.warn(cfg.entry)
+            // remove entry-value for tests
+            delete cfg.entry
+            // add tests
+            cfg.resolve.modules.push(path.resolve(__dirname, 'test/lib')) // Für Test Helpers und Tests
         }
     }
 

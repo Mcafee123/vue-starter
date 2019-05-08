@@ -14,7 +14,6 @@ module.exports =(env, argv) => {
       modules: [
         path.resolve(__dirname, 'src'),       // für HTML files
         path.resolve(__dirname, 'lib'),       // für Applikation
-        path.resolve(__dirname, 'test/lib'),  // Für Test Helpers
         "node_modules"
       ],
       alias: {
